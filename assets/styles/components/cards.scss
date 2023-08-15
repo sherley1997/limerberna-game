@@ -1,0 +1,42 @@
+// .card-group {
+//     // display: -webkit-flex;
+//     display: flex;
+//     flex-wrap: wrap;
+
+  
+//   }
+  
+  
+  
+//   .card {
+//     margin: 1rem;
+//     width: 40%;
+//     margin: 1rem;
+//     // flex: 2;
+//     border: 1px solid lightgrey;
+//     display: felx;           
+//     flex-direction: column;  
+//     img {
+//         width: 100%;
+//       }
+//   }
+  
+ 
+
+  
+.card {
+   
+    img{
+        object-fit: cover;
+        height:18rem;
+    }
+    .card-body {
+        height:18rem;
+        Overflow:hidden;
+        a{
+           position: absolute;
+            bottom: 1rem;
+            right:1rem;
+        }
+    }
+}

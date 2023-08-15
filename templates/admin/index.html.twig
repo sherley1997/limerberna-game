@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrateur{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+    	<div class="alert alert-success">
+        	{{ message }}
+    	</div>
+    {% endfor %}
+	{% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+	<h1  class="text-nuage p-2"> bonjour,<em class="text-secondary"> {{user.nom|upper}} {{user.prenom|capitalize}}</em></h1>
+	{# espace gestion des articles #}
+	<div>
+		<h2 class="text-danger text-center display-5">Gestion des articles</h2>
+		<div class="container">
+			<div class="m-3">
+				<div class="d-flex justify-content-end" >
+					<h2 class="text-primary m-2">Ajouter un article</h2>
+					<a class="fa-solid fa-square-plus fa-3x text-decoration-none text-primary" href="{{path('app_article_creation')}}"></a>
+				</div>
+				<ul class="list-group">
+					{% for article in articles %}
+						<li class="list-group-item d-flex justify-content-between  bg-ciel">{{article.titre}}
+							<div class="justify-end text-end">
+								<a class="btn btn-danger m-1 " href="{{path('app_article_supprimer', {id: article.id})}}" ><i class="fa-regular fa-trash-can text-white"></i></a>
+								<a class="btn btn-nuage m-1 " href="{{path('app_article_modifier', {id: article.id})}}"><i class="fa-regular fa-pen-to-square text-white"></i></a>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{# espace gestion des utilisateur #}
+	<div class="mt-5" >
+		<h2 class="text-danger text-center display-5">Gestion des utilisateurs</h2>
+		<div class="container ">
+			<div class="m-3 mb-0 pb-5">
+				<ul class="list-group ">
+					{% for utilisateur in utilisateurs %}
+						<li class="list-group-item d-flex justify-content-between bg-ciel">{{utilisateur.prenom}} {{utilisateur.nom}}
+							<div class="justify-end text-end ">
+								<a class="btn btn-danger m-1 " href="{{path('app_user_supprimer', {id: utilisateur.id})}}" ><i class="fa-regular fa-trash-can text-white"></i></a>
+								<a class="btn btn-nuage m-1 " href="{{path('app_user_modifier', {id: utilisateur.id})}}"><i class="fa-regular fa-pen-to-square text-white"></i></a>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{# espace Suivi commandes #}
+		<div class="mt-5">
+			<h2 class="text-danger text-center display-5">Mes commandes</h2>
+			<div class="container ">
+				<div class="m-3 mb-0 pb-5">
+
+					<ul class="list-group ">
+						{% for order in orders %}
+							<li class="list-group-item d-flex justify-content-between bg-ciel">
+								<span>Commande N°
+									<strong>{{order.numero}}
+									</strong>passée le
+									<em>{{order.createdAt|date("m/d/Y à g:ia")}}</em>
+								</span>
+								{% set total = 0 %}
+								<br>
+								<div class="justify-end text-end ">
+									{% for item in details %}
+
+										{% for i in item %}
+											{% if i.relatedOrder.id == order.id %}
+												{{i.quantite}}
+												x
+												{{i.jeux}} | 
+												{{i.plateform}}
+												{{i.prix|format_currency('EUR', {rounding_mode: 'floor'})}}
+												{% set total = total + (i.prix * i.quantite) %}
+												<br>
+											{% endif %}
+
+										{% endfor %}
+
+										
+
+									{% endfor %}
+									Montant total payé :
+									<strong>{{total|format_currency('EUR', {rounding_mode: 'floor'})}}</strong>
+
+
+									</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock %}

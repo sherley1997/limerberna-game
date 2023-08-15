@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	<div class="faq">
+		<h1>Votre panier</h1>
+		{% if cart is empty %}
+
+			<h2 class="d-flex justify-content-center text-danger">Vous n'avez pas produits</h2>
+			<img src="{{asset('build/images/icons8-ajouter-au-panier-100.png')}}" alt="panier">
+			<p class="text-white m-2">
+				Nous utilisons des cookies pour enregistrer vos produit préférés sur cette page.
+				            Pour ajouter un produit, cliquez sur le icon en bas dut text. Lorsque vous reviendrez sur cette page, vos favoris seront répertoriés.
+			</p>
+		{% else %}
+			<div class="container-lg">
+				<div class="m-3">
+
+					<ul class="list-group">
+						{% for item in cart %}
+							<li class="list-group-item d-flex justify-content-between  bg-ciel">
+								<span><img src='{{ asset(item.article.photo) }}' alt="" height='50px' class="m-1"><span>{{item.article.titre }}</span>
+									|
+									<span class="text-danger">{{item.platform}}</span>
+								</span>
+
+
+								<div class="justify-end text-end">
+
+									<span class="text-secondary">{{item.article.prix|format_currency('EUR', {rounding_mode: 'floor'})}}</span>
+									<span class="badge text-bg-primary">{{item.quantite}}</span>
+									<span class="text-success m-3 p-2 rounded font-weight-bold border border-success">{{(item.quantite * item.article.prix)|format_currency('EUR', {rounding_mode: 'floor'})}}</span>
+
+									<a class="btn btn-danger m-1 " href="{{path('app_cart_remove', {id: item.id})}}">
+										<i class="fa-regular fa-trash-can text-white"></i>
+									</a>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="d-flex justify-content-end">
+					<a class="btn btn-secondary m-1" href="{{path('app_articles')}}">Retour à la liste des jeux</a>
+					<a class="btn btn-primary m-1" id='order-btn' href="{{path('app_order')}}">Procéder au paiement</a>
+				</div>
+			</div>
+
+		{% endif %}
+
+
+	</div>
+{% endblock %}

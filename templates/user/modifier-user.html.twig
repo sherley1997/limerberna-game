@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'utilisateur{% endblock %}
+
+{% block body %}
+    <h1 class="text-primary text-center">Modifier l'utilisateur</h1>
+    <div class="container">
+        {{form_start(form)}}
+        {{form_end(form)}}
+        <a href="{{path('app_admin')}}" class="btn btn-outline-danger m-1">Annuler</a>
+    </div>
+{% endblock %}

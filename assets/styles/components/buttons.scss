@@ -1,0 +1,83 @@
+
+.add_item_link{
+    margin:1rem;
+    background: #143464;
+    border: 1px solid #143464;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .add_item_link:hover,
+  .add_item_link:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #143464;
+  }
+  
+  .add_item_link:active {
+    opacity: .5;
+  
+  }
+  
+  .delete_item_link{
+    margin:1rem;
+    background: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .delete_item_link:hover,
+  .delete_item_link:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #dc3545;
+  }
+  
+  .delete_item_link:active {
+    opacity: .5;
+  }
+
+
+.plateforme-jeux{
+    transition: all .6s ease;
+    &:hover{
+      transform: scale(1.05)
+    }
+  }

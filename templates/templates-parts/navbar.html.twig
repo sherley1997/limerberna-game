@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg sticky-top  bg-primary" >
+	<div class="container">
+		<a class="navbar-brand navBar text-danger" href="{{ path('app_home') }}">Limeberna</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		{# Titre de mes page #}
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active text-white" aria-current="page" href="{{ path('app_faq') }}">FAQ</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active text-white" href="{{ path('app_cart') }}">Panier</a>
+				</li>
+
+				{# Plateforme de jeux dans une categorie #}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Categorie
+					</a>
+					<ul class="dropdown-menu bg-danger">
+						<li>
+							<a class="dropdown-item text-white" href="{{path('app_articles_plateforme', {filter: 'PlayStation'})}}">PlayStation</a>
+						</li>
+						<li>
+							<a class="dropdown-item text-white" href="{{path('app_articles_plateforme', {filter: 'Xbox'})}}">Xbox</a>
+						</li>
+						<li>
+							<a class="dropdown-item text-white" href="{{path('app_articles_plateforme', {filter: 'Nintendo Switch'})}}">Nintendo Switch</a>
+						</li>
+						<li>
+							<a class="dropdown-item text-white" href="{{path('app_articles_plateforme', {filter: 'PC'})}}">Ordinateur</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item text-white" href="{{path('app_articles')}}">Tous les jeux</a>
+						</li>
+					</ul>
+				</li>
+
+
+				{# Complet #}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Compte
+					</a>
+					<ul class="dropdown-menu bg-danger">
+						<li>
+							{% if app.user %}
+								<a class="dropdown-item text-white" href="{{ path('app_logout') }}">Se déconnecter</a>
+
+							{% else %}
+								<a class="dropdown-item text-white" href="{{ path('app_login') }}">Se connecter</a>
+							{% endif %}
+						</li>
+						<li><hr class="dropdown-divider"></li>
+
+						<li>
+							{% if app.user %}
+								{% if is_granted('ROLE_ADMIN') %}
+									<a class="dropdown-item text-white" href="{{ path('app_admin') }}">Mon compte</a>
+								{% else %}
+									<a class="dropdown-item text-white" href="{{ path('app_user') }}">Mon compte</a>
+								{% endif %}
+							{% else %}
+								<a class="dropdown-item text-white" href="{{ path('app_register') }}">S'inscrire</a>
+							{% endif %}
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active text-white" href="{{ path('app_contact') }}">Contact</a>
+				</li>
+			</ul>
+			<form id="barre" class="d-flex" role="search" action="#" method="GET" >
+				<input id="barre" class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+				<button class="btn btn-outline-danger" type="submit">
+					<i class="fa-solid fa-gamepad fa-xl"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+</nav>

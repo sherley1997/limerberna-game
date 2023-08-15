@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block body %}
+    <div class="faq">
+        <h1 class="d-flex justify-content-center text-danger">Foire Aux Questions</h1>
+        <div>
+            <h2 class="h4 text-white mt-2">Mise en évidence de produits ?</h2>
+            <p class="text-white m-2">Nous vous présentons des produits susceptibles de vous intéresser, en fonction de votre historique de recherche, de navigation, d’achat ou d’autres offres sur la page. Par exemple, nous pouvons présenter le produit que vous êtes en train de consulter ou que vous avez placé en dernier dans votre panier avec des produits complémentaires pertinents.</p>
+        </div>
+        <div>
+            <h2 class="h4 text-white mt-2">Pour quelles raisons est-on amené à jouer aux jeux vidéo ?</h2>
+            <p class="text-white m-2">Ces motivations sont très diverses. D’après les études menées sur ce sujet, on retrouve le plus souvent une recherche de divertissement, de plaisir et d’excitation, une recherche d’expérience différente, d’interaction sociale ou de compagnie, d’un espace qui permette de s’exprimer sans être critiqué sur l’apparence physique, la sexualité ou l’âge.</p>
+        </div>
+        <div>
+            <h2 class="h4 text-white mt-2">Combien de personnes sont touchées par une utilisation des jeux vidéo ?</h2>
+            <p class="text-white m-2">Il y aurait plus de 3,2 milliards de joueurs estimés selon DFC Intelligence, une société d’étude stratégique spécialisée dans les jeux vidéo, ce qui représente un peu plus de 40 % de la population mondiale.</p>
+        </div>
+        <section>
+            {% for message in app.flashes('faq_add_success') %}
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					{{message}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+            <div class="container mb-3 mt-5  text-white">
+                {{form_start(FaqForm)}}
+                    {{form_row(FaqForm.email)}}
+                    {{form_row(FaqForm.objet)}}
+                    {{form_row(FaqForm.message)}}
+                    <div class="text-center">
+                        {{form_row(FaqForm.envoyer)}}
+                    </div>
+                {{form_end(FaqForm)}}
+            </div>
+        </section>
+    </div>
+{% endblock %}

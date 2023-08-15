@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <section class="faq">
+        <h1 class="d-flex justify-content-center text-danger">Contactez-nous</h1>
+        <div class="container mb-3 mt-5  text-white">
+            {{ form_start(contactForm) }}                
+            {# <div class="text-center">
+                    {{ form_row(contactForm.envoyer) }}
+            </div> #}
+            {{ form_end(contactForm) }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+	<div class="bg-primary">
+		<img class="photo w-100" src="{{ asset('build/images/maPhoto.png') }}" alt="Photo">
+		<h2 class="d-flex justify-content-center text-danger m-0 p-3">Dernière Nouveauté</h2>
+	</div>
+	{{ include('templates-parts/carrousel.html.twig') }}
+{% endblock %}
+
+{% block body %}
+	<div class="bg-primary p-3">
+    	<div class="container-lg">
+			<h2 class="d-flex justify-content-center text-danger p-3 ">Console Compatible</h2>
+			{# plateforme image #}
+			<section class="row row-cols-1 row-cols-lg-2 g-4">
+				<div class="col plateforme-jeux">
+            		<a href="{{path('app_articles_plateforme', {filter: 'PlayStation'})}}" class="card">
+						<img  src="{{asset('build/images/PlayStation.jpg')}}" class="img-fluid img-thumbnail p-0 m-0 rounded-25" alt="PlayStation">
+            		</a>
+                </div>
+              	<div class="col plateforme-jeux">
+            		<a href="{{path('app_articles_plateforme', {filter: 'Xbox'})}}" class="card">
+						<img  src="{{asset('build/images/XBox.jpg')}}" class="img-fluid img-thumbnail p-0 m-0" alt="Xbox">
+            		</a>
+              	</div>
+              	<div class="col plateforme-jeux">
+            		<a href="{{path('app_articles_plateforme', {filter: 'Nintendo Switch'})}}" class="card">
+						<img  src="{{asset('build/images/NintendoSwitch.jpg')}}" class="img-fluid img-thumbnail p-0 m-0" alt="Nintendo">
+            		</a>
+                </div>
+              	<div class="col plateforme-jeux">
+            		<a href="{{path('app_articles_plateforme', {filter: 'PC'})}}" class="card">
+						<img  src="{{asset('build/images/PcGames.jpg')}}" class="img-fluid img-thumbnail p-0 m-0" alt="PC">
+            		</a>
+                </div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

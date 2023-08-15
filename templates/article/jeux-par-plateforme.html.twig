@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos articles{% endblock %}
+
+{% block body %}
+	<h1 class="text-primary text-center">Liste de tous les articles dans <span class="text-danger"> {{filter}}</span></h1>
+	<div class="container-sm" >
+		<div class="mb-3">
+			<div class="row" >
+				{% for article in articlesPlateforme %}
+					<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 g-4">
+						<div class="card">
+							<img src="{{asset(article.photo)}}" class="card-img-top cover" alt="{{article.titre}}">
+							<div class="card-body" >
+								<h5 class="card-title text-danger">{{article.titre}}</h5>
+								<p class="card-text" >{{article.description[:200]}}...</p>
+								<a href="{{path('app_article_afficher', {id: article.id})}}" class="btn btn-primary">En savoir plus ..</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+    </div>
+{% endblock %}

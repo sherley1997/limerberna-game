@@ -1,0 +1,60 @@
+// modifier le shema des couleurs de base de bootstrap
+$theme-colors: (
+  "primary": #143464,
+  "secondary": #746d6d,
+  "nuage": #848898,
+  "ciel": #ddf0f7,
+  "danger":#dc3545,
+  "success": #109510,
+  "sherley": pink,
+  "warning":rgb(225, 127, 0)
+);
+//----------------------------
+@import  './components/buttons.scss';
+@import  './components/cards.scss';
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+body {
+   
+  background-color: #ffffff;
+}
+// main{
+//   // margin-top: 2rem;
+// }
+.navBar {
+  font-family: "Silkscreen", cursive;
+}
+
+.faq {
+  background-color: #848898;
+  border-radius: 2rem;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.footer {
+  // overflow: hidden; 
+
+ position: relative;
+margin-top: auto;
+
+
+  h2{
+    font-family: "Silkscreen", cursive;
+  }
+
+  // font-family: "Silkscreen", cursive;
+  iframe{
+    margin:0;
+    max-width:"300" ;
+    height:"300";
+    padding:1rem;
+    padding-left:2rem;
+    padding-right:2rem;
+  }
+}
+
+
+
+//  import Bootstrap
+@import "./node_modules/bootstrap/scss/bootstrap";

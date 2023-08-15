@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'enregister{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <div class="container">
+        <div>
+            <h1 class="text-primary">S'enregister</h1>
+            {{ form_start(registrationForm) }}
+            {{ form_end(registrationForm) }}
+            <a class="btn btn-lg btn-outline-danger m-3" href="{{path('app_login')}}">Annuler </a>
+        </div>
+    </div>
+{% endblock %}

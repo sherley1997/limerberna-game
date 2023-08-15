@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un article{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('articles_add_success') %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endfor %}
+	<div class="container">
+		{{form_start(articleForm)}}
+			<ul  class="plateformes" data-index="{{ articleForm.plateforme|length > 0 ? articleForm.plateforme|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(articleForm.plateforme.vars.prototype)|e('html_attr') }}">
+				{% for plateforme in articleForm.plateforme %}
+					<li>{{form_row(plateforme.nom)}}</li>
+				{% endfor %}
+			</ul>
+			<button type="button" class="add_item_link" data-collection-holder-class="plateformes">Ajouter une plateforme</button>
+		{{form_end(articleForm)}}
+	</div>
+{% endblock %}
+

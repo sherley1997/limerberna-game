@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-primary text-center">Détail du l'article</h1>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-warning">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<form action="{{ path('app_cart_add', {id :article[0].id} )}}" method="post">
+  <div class="container">
+		<div class="m-5">
+			<div class="card">
+				<img src="{{asset(article[0].photo)}}" class="card-img-top" alt="{{article[0].titre}}">
+				<div class="card-body">
+					<h2 class="card-title text-danger">{{article[0].titre}}</h2>
+					<p class="card-text">{{article[0].description}}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item display-4 text-end text-primary">{{article[0].prix}}
+						<span class="text-nuage">€</span>
+					</li>
+					<li class="list-group-item">Sortie le
+						<strong>{{article[0].dateDeSortie|date("m/d/Y")}}</strong>
+					</li>
+					<li class="list-group-item">Disponible sur les plateformes suivant :
+          
+						<ul id="platform-to-check">
+							{% if article[0].plateforme|length <= 1 %}
+								<li>
+									<input type="checkbox" id={{article[0].plateforme[0].id}} name='platform' value={{article[0].plateforme[0].nom}} checked readonly />
+									<label for='platform' class="text-success">
+										{{ article[0].plateforme[0] }}</label>
+								</li>
+							
+						</li>
+					{% else %}
+						{% for p in article[0].plateforme %}
+							
+							<li>
+									<input type="checkbox" id={{article[0].plateforme[0].id}} name= {{'platform'~p.id}} value={{p.nom}}  />
+									<label for = {{'platform'~p.id}}  class="text-success">
+										{{ p }}</label>
+								</li>
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</li>
+		</ul>
+		<div class="d-flex justify-content-end">
+			<a href="{{path('app_articles')}}" class="btn btn-secondary m-1">Retourner aux articles</a>
+			{# <button href="{{ path('app_cart_add', {id :article[0].id} )}}" class="btn btn-primary m-1">Ajouter au panier</a> #}
+      <button class="btn btn-primary m-1" id='add-to-cart' type="submit">Ajouter au panier</button>
+		</div>
+	</div>
+  </form>
+{% endblock %}
