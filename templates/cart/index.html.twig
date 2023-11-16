@@ -5,14 +5,11 @@
 
 {% block body %}
 	<div class="faq">
-		<h1>Votre panier</h1>
+		<h1 class="text-center text-white">Votre panier</h1>
 		{% if cart is empty %}
-
-			<h2 class="d-flex justify-content-center text-danger">Vous n'avez pas produits</h2>
-			<img src="{{asset('build/images/icons8-ajouter-au-panier-100.png')}}" alt="panier">
-			<p class="text-white m-2">
-				Nous utilisons des cookies pour enregistrer vos produit préférés sur cette page.
-				            Pour ajouter un produit, cliquez sur le icon en bas dut text. Lorsque vous reviendrez sur cette page, vos favoris seront répertoriés.
+			<a class="text-decoration-none" href="{{ path('app_articles') }}"><i class="text-danger fa-solid fa-cart-plus fa-2xl d-flex align-items-center justify-content-center p-5"></i></a>
+			<p class="text-white m-2 text-center">
+				Pour ajouter un produit, cliquez sur le icon en rouge. Lorsque vous reviendrez sur cette page, vos favoris seront répertoriés.
 			</p>
 		{% else %}
 			<div class="container-lg">

@@ -73,7 +73,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
             //code.....
             $this->addFlash("articles_add_success", "L'article à bien été enregistré");
-            return $this->redirectToRoute('app_article_creation');
+            return $this->redirectToRoute('app_articles');
         }
         return $this->render('article/creer-article.html.twig', [
             'articleForm' => $articleForm->createView(),
